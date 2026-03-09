@@ -1,27 +1,57 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>AI Chat</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Agent Chat</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/tokyo-night-dark.min.css">
 <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<div class="chat-container">
+<div class="layout">
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-icon">◈</span>
+        <span class="logo-text">AI Agent</span>
+      </div>
+      <div class="status">
+        <span class="status-dot"></span>
+        <span class="status-label">online</span>
+      </div>
+    </div>
+  </header>
 
-<h2>AI Agent Chat</h2>
+  <main class="chat-wrapper">
+    <div id="chat" class="chat"></div>
+  </main>
 
-<div id="chat"></div>
-
-<div class="input-area">
-<input id="message" placeholder="Type a message"/>
-<button onclick="send()">Send</button>
+  <footer class="input-footer">
+    <div class="input-inner">
+      <div class="input-box">
+        <textarea
+          id="message"
+          placeholder="メッセージを入力…"
+          rows="1"
+          onkeydown="handleKey(event)"
+        ></textarea>
+        <button id="send-btn" onclick="send()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </button>
+      </div>
+      <p class="hint">Shift+Enter で改行 · Enter で送信</p>
+    </div>
+  </footer>
 </div>
 
-</div>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 <script src="chat.js"></script>
-
 </body>
 </html>
